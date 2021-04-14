@@ -9,7 +9,7 @@ router.get('/', async function (req, res) {
       res.send("Error: the query param \"search\" is required ex: /ebayScraper?search=yourSearchTerm")
     } else {
       // Launch puppeteer and go to ebay.com
-      const browser = await puppeteer.launch();
+      const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
       const page = (await browser.pages())[0]
       await page.goto(`https://www.ebay.com/sch/i.html?_nkw=${req.query.search}`)
 

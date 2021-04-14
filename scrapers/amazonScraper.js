@@ -9,7 +9,7 @@ router.get('/', async function (req, res) {
       res.send("Error: the query param \"search\" is required ex: /amazonScraper?search=yourSearchTerm")
     } else {
       // Launch puppeteer and go to amazon.com
-      const browser = await puppeteer.launch();
+      const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
       const page = (await browser.pages())[0]
       await page.goto(`https://www.amazon.com/s?k=${req.query.search}`)
 

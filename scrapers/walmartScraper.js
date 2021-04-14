@@ -13,7 +13,7 @@ router.get('/', async function (req, res) {
       res.send("Error: the search param \"search\" is required ex: /walmartScraper?search=yourSearchTerm")
     } else {
       // Launch puppeteer and go to walmart website
-      const browser = await puppeteer.launch({ headless: true })
+      const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] })
       const page = await browser.newPage()
 
       // Get current cookies from the page for certain URL
